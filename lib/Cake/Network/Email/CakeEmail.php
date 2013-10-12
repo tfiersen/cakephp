@@ -1101,6 +1101,19 @@ class CakeEmail {
 	}
 
 /**
+ * Render the mail
+ *
+ * @param string|array $content String with message or array with messages
+ */
+	public function render($content = null) {
+		if (is_array($content)) {
+			$content = implode("\n", $content) . "\n";
+		}
+
+		$this->_message = $this->_render($this->_wrap($content));
+	}
+
+/**
  * Send an email using the specified content, template and layout
  *
  * @param string|array $content String with message or array with messages
